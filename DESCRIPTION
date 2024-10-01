@@ -4,6 +4,9 @@ Title: What the Package Does (Short Line)
 Version: 1.0
 Date: 2024-09-30
 Author: Who wrote it
+Authors@R: c(
+    person("Alexander", "Björhag", email = "alebj452@student.liu.se", role = "cre"),
+    person("Jakob", "Lindner", email = "jakli758@student.liu.se", role = "cre")
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line).
 License: What license is it under?
