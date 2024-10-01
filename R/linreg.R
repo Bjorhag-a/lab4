@@ -47,7 +47,7 @@ linreg <- setRefClass("linreg",
         
         .self$y <<- iris[[all.vars(.self$updated_formula)[2]]]
         
-        .self$beta <<- inv(t(X)%*%X) %*% t(X) %*% y
+        .self$beta <<- solve(t(X)%*%X) %*% t(X) %*% y
         
         .self$y_hat <<- X %*% .self$beta
         
@@ -65,7 +65,7 @@ linreg <- setRefClass("linreg",
       },
       print = function() {
         paste("linreg(formula = ",.self$formula, ", data = ", substitute(data),")")
-        return_list <- list(paste("linreg(formula = ",.self$formula, ", data = ", substitute(data),")"), c(1,2))
+        return_list <- list(paste("linreg(formula = ",.self$formula, ", data = ", substitute(data),")"), .self$beta)
         #return_list <- list(1, 2)
         names(return_list) <- c("Call", "Coefficients")
         #return_list
@@ -89,10 +89,10 @@ linreg <- setRefClass("linreg",
    )
 )
 
-# l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 # #class(l)[1]
-# l$beta_var
-# l$print()
+#rownames(l$beta)
+l$print()
 # l$coef()
 # l$updated_formula
 # i<-1
