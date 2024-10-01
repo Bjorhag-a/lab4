@@ -53,6 +53,9 @@ linreg <- setRefClass("linreg",
         .self$df <<-  nrow(X) - ncol(X)
         .self$res_var <<- (t(.self$residuals)%*%.self$residuals) / .self$df
         # TODO: rest of the formulas
+      },
+      coef = function(){
+        return(.self$beta)
       }
    )
 )
