@@ -1,18 +1,17 @@
 Package: lab4
 Type: Package
-Title: What the Package Does (Short Line)
+Title: Lab4
 Version: 1.0
-Date: 2024-09-30
-Author: Who wrote it
-Authors@R: c(
-    person("Alexander", "Bjoerhag", email = "alebj452@student.liu.se", role = "cre"),
-    person("Jakob", "Lindner", email = "jakli758@student.liu.se", role = "cre"))
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line).
-License: What license is it under?
-Depends:
+Date: 2024-09-23
+Author: Björhag, Alexander; Lindner, Jakob
+Maintainer: <alebj452@student.liu.se>, <jakli758@student.liu.se>
+Description: Assignment for lab 4 in Advanced R programming.
+License: GPL-3 + file LICENSE
+Depends: 
+    R (>= 3.5.0),
     matlib
+RoxygenNote: 7.3.2
+Encoding: UTF-8
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-RoxygenNote: 7.3.2
