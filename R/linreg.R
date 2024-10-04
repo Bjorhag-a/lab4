@@ -109,6 +109,7 @@ linreg <- setRefClass("linreg",
         cat(paste("Residual standard error: ", sqrt(.self$res_var), " on ", .self$df," degrees of freedom", sep = ""))
         
         #TODO: generalise it, so it can be used on other formulas as well!!!
+        #TODO: add p-values!!! 
       }
    )
 )
