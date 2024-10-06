@@ -8,8 +8,15 @@
 #' @param formula a formula object.
 #' @param data a data frame.
 #' 
+#' @examples
+#' # data(iris)
+#' # l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+#' # l$summary()
+#'  
+#' 
 #' @import matlib 
 #' @import ggplot2
+#' @import methods
 #'
 #' @export linreg
 
@@ -194,6 +201,7 @@ linreg <- setRefClass("linreg",
         
         cat(sprintf("%-15s %10s %12s %10s\n", "", "Estimate", "Std. Error", "t value"))
         cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "(Intercept)", .self$beta[1], .self$beta_se[1], .self$t_values[1]))
+        
         cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "Sepal.Width", .self$beta[2], .self$beta_se[2], .self$t_values[2]))
         cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "Sepal.Length", .self$beta[3], .self$beta_se[3], .self$t_values[3]))
         
@@ -210,23 +218,23 @@ linreg <- setRefClass("linreg",
    )
 )
 
-l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
-d <- linreg$new(formula=Petal.Length~Species, data=iris)
-l$plot()
-l$print()
-l$.self$residuals
-l$.self$res_var
-d$.self$stand_res
-d$plot()
+#l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+#d <- linreg$new(formula=Petal.Length~Species, data=iris)
+#l$plot()
+#l$print()
+#l$.self$residuals
+#l$.self$res_var
+#d$.self$stand_res
+#d$plot()
 
-min(d$.self$stand_res)
+#min(d$.self$stand_res)
 
--0.445578965 / 0.6464805
+#-0.445578965 / 0.6464805
 
 
 # #class(l)[1]
 #rownames(l$beta)
-l$print()
+#l$print()
 # l$coef()
 # l$updated_formula
 # i<-1

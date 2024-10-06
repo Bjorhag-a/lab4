@@ -15,3 +15,10 @@ linreg is used t o fit linear models and uses the ordinary
   linear algebra to  calculate the regression
 }
 
+\examples{
+# data(iris)
+# l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+# l$summary()
+ 
+
+}
