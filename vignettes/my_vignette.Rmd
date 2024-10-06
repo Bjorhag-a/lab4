@@ -6,7 +6,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-#Introduction
+# Introduction
 This vingette will guide you how the `linreg` package works with the help of the IRIS dataset that is already in RStudio.
 
 ```{r, include = FALSE}
@@ -16,17 +16,22 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 ```{r setup}
+data("iris")
 library(lab4)
 ```
 
-## Data set used to guide how the package works
+## Dataset used to guide how the package works
+We will use the Iris dataset here to show how the package work. The dataset contains 5 variables, Sepal.Length, Sepal.Width, Petal.Length, Petal.Width and Species. The first 4 are continuous measured and the species variable is a factor with the 3 flower Species (setosa, versicolor, virginica). The dataset contains of total 150 observations. 
 ```{r}
+data(iris)
 head(iris)
 ```
 
 
 ## Create a model
+Here we build a linear regression, in the formula you set the dependent variable on the left side of the $\sim$ sign and the independent variables on the right side of the sign. In data you include the dataframe where the variables are.  
 ```{r}
 model <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 ```
@@ -34,30 +39,30 @@ model <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 ## The plot() function in the linreg-package
 With the plot function the package will create one Residuals VS Fitted Values graph and one Scale-Locaion graph from the formula you just have created.
 
-```{r plot}
+```{r fig.height=5, fig.width=5, message=FALSE, warning=FALSE}
 
 model$plot()
 ```
 
 
 ## The resid() function in the linreg-package
-With the resid function the package will return a vector with the models residuals
+With the resid function the package will return a vector with the models residuals $\hat{e_i}$
 ```{r resid}
 
-model$resid()
+head(model$resid())
 ```
 
 
 ## The pred() function in the linreg-package
-With the pred function the package will return the predicted values for the model
+With the pred function the package will return the predicted values $\hat{y_i}$ for the model
 ```{r pred}
 
-model$pred()
+head(model$pred())
 ```
 
 
 ## The coef() function in the linreg-package
-With the coef function the package will return the named coefficients for the model 
+With the coef function the package will return the named coefficients $\hat{\beta_i}$for the model 
 ```{r coef}
 
 model$coef()
