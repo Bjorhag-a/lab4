@@ -17,6 +17,7 @@
 #' @import matlib 
 #' @import ggplot2
 #' @import methods
+#' @import rgl
 #'
 #' @export linreg
 
