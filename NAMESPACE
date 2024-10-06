@@ -2,6 +2,4 @@
 
 export(linreg)
 import(ggplot2)
-import(matlib)
 import(methods)
-import(rgl)

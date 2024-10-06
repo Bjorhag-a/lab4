@@ -20,5 +20,4 @@ linreg is used t o fit linear models and uses the ordinary
 # l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 # l$summary()
  
-
 }

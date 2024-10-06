@@ -13,11 +13,8 @@
 #' # l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 #' # l$summary()
 #'  
-#' 
-#' @import matlib 
 #' @import ggplot2
 #' @import methods
-#' @import rgl
 #'
 #' @export linreg
 
@@ -93,7 +90,7 @@ linreg <- setRefClass("linreg",
         
         .self$res_var <<- (t(.self$residuals)%*%.self$residuals) / .self$df
         
-        .self$beta_var <<- .self$res_var[1]  * inv(t(X)%*%X)
+        .self$beta_var <<- .self$res_var[1]  * solve(t(X)%*%X)
         # beta standard error
         .self$beta_se <<- sqrt(diag(.self$beta_var))
         
