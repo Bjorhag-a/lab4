@@ -5,7 +5,7 @@ Version: 1.0
 Date: 2024-09-23
 Author: Björhag, Alexander; Lindner, Jakob
 Maintainer: <alebj452@student.liu.se>, <jakli758@student.liu.se>
-Description: Assignment for lab 4 in Advanced R programming.
+Description: Assignment for lab 4 in Advanced R programming. This package is used to fit lienar models. 
 License: GPL-3 + file LICENSE
 Depends: 
     R (>= 3.5.0),

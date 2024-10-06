@@ -1,3 +1,17 @@
+#' @title  Linear regression using ordinary linear algebra
+#' 
+#' @description linreg is used t o fit linear models and uses the ordinary
+#'   linear algebra to  calculate the regression
+#' 
+#' 
+#' 
+#' @param formula a formula object.
+#' @param data a data frame.
+#' 
+#' @import matlib ggplot2
+
+
+
 library(matlib)
 # 
 # data("iris")
@@ -147,6 +161,7 @@ linreg <- setRefClass("linreg",
 l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 d <- linreg$new(formula=Petal.Length~Species, data=iris)
 l$plot()
+l$print()
 l$.self$residuals
 l$.self$res_var
 d$.self$stand_res

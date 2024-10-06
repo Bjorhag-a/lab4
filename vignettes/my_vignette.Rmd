@@ -16,6 +16,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Data set used to guide how the package works
+```{r}
+head(iris)
+```
+
+
 ## Create a model
 ```{r}
 model <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
