@@ -20,28 +20,6 @@
 
 
 
-# 
-# data("iris")
-# 
-# #linreg <- function(formula, data) {
-# #  return (1)  
-# #}
-# 
-# formula <- iris$Petal.Length~Sepal.Width+Sepal.Length
-# deparse(formula)
-# all.vars(formula)[1]
-# d <- iris
-# #all.vars(formula)
-# X <-model.matrix(formula, iris)
-# y <- iris[[all.vars(formula)[2]]]
-# y
-# 
-# b <- solve(t(X)%*%X) %*% t(X) %*% y
-# b
-# 
-# #all.vars(formula)[1]
-# #d[["iris"]]
-
 linreg <- setRefClass("linreg",
     fields = list(
       formula = "formula",
@@ -216,35 +194,4 @@ linreg <- setRefClass("linreg",
    )
 )
 
-#l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
-#d <- linreg$new(formula=Petal.Length~Species, data=iris)
-#l$plot()
-#l$print()
-#l$.self$residuals
-#l$.self$res_var
-#d$.self$stand_res
-#d$plot()
-
-#min(d$.self$stand_res)
-
-#-0.445578965 / 0.6464805
-
-
-# #class(l)[1]
-#rownames(l$beta)
-#l$print()
-# l$coef()
-# l$updated_formula
-# i<-1
-# while (i <= 3){
-#   print(paste(i, l$beta[[i]]))
-#   #print(l$beta[[i]]/sqrt(l$beta_var[i][i]))
-#   print(l$beta_var[i][i])
-#   i <- i + 1
-# }
-# 
-# class(l$beta_var)
-# 
-# q <- matrix(1:3, nrow=3, ncol=1)
-# q / 2
 
