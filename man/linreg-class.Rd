@@ -4,20 +4,24 @@
 \name{linreg-class}
 \alias{linreg-class}
 \alias{linreg}
-\title{Linear regression using ordinary linear algebra}
+\title{Reference Class representing a Linear regression using ordinary linear algebra}
 \arguments{
 \item{formula}{a formula object.}
 
 \item{data}{a data frame.}
 }
+\value{
+will return an object of class `linreg`
+}
 \description{
-linreg is used t o fit linear models and uses the ordinary
-  linear algebra to  calculate the regression
+linreg is used to fit linear models and uses the ordinary
+  linear algebra to calculate the regression
 }
 
 \examples{
 # data(iris)
 # l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 # l$summary()
+
  
 }

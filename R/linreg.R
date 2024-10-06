@@ -1,6 +1,6 @@
-#' @title  Linear regression using ordinary linear algebra
+#' @title  Reference Class representing a Linear regression using ordinary linear algebra
 #' 
-#' @description linreg is used t o fit linear models and uses the ordinary
+#' @description linreg is used to fit linear models and uses the ordinary
 #'   linear algebra to calculate the regression
 #' 
 #' 

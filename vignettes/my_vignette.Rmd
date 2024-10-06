@@ -1,12 +1,13 @@
 ---
-title: "my_vignette"
+title: "Linear Regression"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{my_vignette}
+  %\VignetteIndexEntry{Linear Regression}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-# Introduction
+
+## Introduction  
 This vingette will guide you how the `linreg` package works with the help of the IRIS dataset that is already in RStudio.
 
 ```{r, include = FALSE}
