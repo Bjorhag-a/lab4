@@ -83,11 +83,6 @@ linreg <- setRefClass("linreg",
         .self$stand_res <<- .self$residuals / sqrt(.self$res_var)[1]
         
         .self$stand_res <<- sqrt(abs(.self$stand_res))
-        
-        #.self$t_values <<- sapply(.self$beta, FUN = function(x){x/sqrt(.self$beta_var)})
-          #.self$beta / sqrt(.self$beta_var)
-        # TODO: t-values
-
       },
       print = function() {
         cat("Call:")
@@ -177,24 +172,19 @@ linreg <- setRefClass("linreg",
         return(.self$beta)
       },
       summary = function(){
+        # format the output
+        cat(sprintf("%-15s %10s %12s %10s %10s\n", "", "Estimate", "Std. Error", "t value", "p value"))
+        cat(sprintf("%-15s %10.2f %12.2f %10.2f   %5.2f ***\n", "(Intercept)", .self$beta[1], .self$beta_se[1], .self$t_values[1], .self$p_values[1]))
         
-        cat(sprintf("%-15s %10s %12s %10s\n", "", "Estimate", "Std. Error", "t value"))
-        cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "(Intercept)", .self$beta[1], .self$beta_se[1], .self$t_values[1]))
-        
-        cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "Sepal.Width", .self$beta[2], .self$beta_se[2], .self$t_values[2]))
-        cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "Sepal.Length", .self$beta[3], .self$beta_se[3], .self$t_values[3]))
-        
-        #cat(sprintf("%-15s %10s %12s %10s\n", "", "Estimate", "Std. Error", "t value"))
-        #cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "(Intercept)", -2.50, 0.50, -4.40))
-        #cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "Sepal.Width", -1.30, 0.10, -10.90))
-        #cat(sprintf("%-15s %10.2f %12.2f %10.2f   ***\n", "Sepal.Length", 1.70, 0.01, 27.50))
+        # create line for all independant variables
+        i <- 1
+        while (i <= length(all.vars(.self$updated_formula)[-(1:2)])){
+          cat(sprintf("%-15s %10.2f %12.2f %10.2f   %5.2f ***\n", all.vars(.self$updated_formula)[-(1:2)][i], .self$beta[i+1], .self$beta_se[i+1], .self$t_values[i+1], .self$p_values[i+1]))
+          i <- i + 1
+          }
         
         cat(paste("Residual standard error: ", sqrt(.self$res_var), " on ", .self$df," degrees of freedom", sep = ""))
-        
-        #TODO: generalise it, so it can be used on other formulas as well!!!
-        #TODO: add p-values!!! 
       }
    )
 )
-
 
