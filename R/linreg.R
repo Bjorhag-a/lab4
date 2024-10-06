@@ -1,4 +1,19 @@
-library(matlib)
+#' @title  Linear regression using ordinary linear algebra
+#' 
+#' @description linreg is used t o fit linear models and uses the ordinary
+#'   linear algebra to  calculate the regression
+#' 
+#' 
+#' 
+#' @param formula a formula object.
+#' @param data a data frame.
+#' 
+#' @import matlib 
+#' @import ggplot2
+#'
+
+
+
 # 
 # data("iris")
 # 
@@ -33,7 +48,8 @@ linreg <- setRefClass("linreg",
       df = "numeric",
       res_var = "array",
       beta_var = "array",
-      t_values = "array"
+      t_values = "array",
+      stand_res = "array"
     ),
     methods = list(
       initialize = function(formula, data){
@@ -59,6 +75,10 @@ linreg <- setRefClass("linreg",
         
         .self$beta_var <<- .self$res_var[1] * inv(t(X)%*%X)
         
+        .self$stand_res <<- .self$residuals / sqrt(.self$res_var)[1]
+        
+        .self$stand_res <<- sqrt(abs(.self$stand_res))
+        
         #.self$t_values <<- sapply(.self$beta, FUN = function(x){x/sqrt(.self$beta_var)})
           #.self$beta / sqrt(.self$beta_var)
         # TODO: t-values
@@ -72,7 +92,57 @@ linreg <- setRefClass("linreg",
         return(return_list)
       },
       plot = function(){
-        #TODO implement
+        theme <- theme(
+          axis.ticks = element_line(colour = "black"),
+          axis.ticks.length = unit(0.2, "cm"),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          axis.title = element_text(size = 13, vjust = 0), 
+          axis.text = element_text(size = 13, colour = "black"), 
+          plot.title = element_text(hjust = 0.5), 
+          panel.background = element_rect(fill = "white", colour = "black", linetype = "solid"),
+          plot.background = element_rect(colour = NA),
+          axis.text.x = element_text(size = 13),
+        )
+    
+        #Outliers
+        #https://stackoverflow.com/questions/39259252/how-does-plot-lm-determine-outliers-for-residual-vs-fitted-plot
+        
+        outliers <- abs(.self$residuals)
+        outliers_2 <- abs(.self$stand_res)
+        
+        outliers <- order((outliers), decreasing = TRUE)[1:3]
+        outliers_2 <- order((outliers_2), decreasing = TRUE)[1:3]
+        
+        data_obs <- data.frame(obs = 1:nrow(.self$data))
+                               
+        data_obs$label <- ifelse(data_obs$obs %in% outliers, data_obs$obs, "")
+        data_obs$label_2 <- ifelse(data_obs$obs %in% outliers_2, data_obs$obs, "")
+        
+                                                     
+        rvsf <- ggplot(data.frame(.self$y_hat, .self$residuals), aes(y = .self$residuals, x = .self$y_hat)) + 
+          geom_point(shape=21, size = 2) +
+          geom_smooth(colour = "red", se = F, method = "glm") +
+          ggtitle("Residuals vs Fitted") + 
+          xlab(paste("Fitted Values \n", "linreg(", format(formula), ")")) +
+          ylab("Residuals") +
+          theme + geom_hline(yintercept = 0, color = "grey", linetype="dotted") +
+          geom_text(label = data_obs$label, hjust = -0.3, vjust = 0.5)
+        
+        
+        
+        scaloc <- ggplot(data.frame(.self$y_hat, .self$stand_res ), aes(y = .self$stand_res, x = .self$y_hat)) + 
+          geom_point(shape=21, size = 2) +
+          geom_smooth(colour = "red", se = F) +
+          ggtitle("Scale-Location") + 
+          xlab(paste("Fitted Values \n", "linreg(", format(formula), ")")) +
+          ylab(expression(sqrt("Standardized Residuals"))) +
+          theme + geom_text(label = data_obs$label_2, hjust = -0.3, vjust = 0.5)
+        
+        
+        return(list(rvsf, scaloc))
+        
+      
       },
       resid = function(){
         return(.self$residuals)
@@ -90,6 +160,19 @@ linreg <- setRefClass("linreg",
 )
 
 l <- linreg$new(formula=Petal.Length~Sepal.Width+Sepal.Length, data=iris)
+d <- linreg$new(formula=Petal.Length~Species, data=iris)
+l$plot()
+l$print()
+l$.self$residuals
+l$.self$res_var
+d$.self$stand_res
+d$plot()
+
+min(d$.self$stand_res)
+
+-0.445578965 / 0.6464805
+
+
 # #class(l)[1]
 #rownames(l$beta)
 l$print()
