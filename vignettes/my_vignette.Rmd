@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r setup}
+library(lab4)
+```
+
 ## Data set used to guide how the package works
 ```{r}
 head(iris)
@@ -38,7 +42,7 @@ model$plot()
 
 ## The resid() function in the linreg-package
 With the resid function the package will return a vector with the models residuals
-```{r plot}
+```{r resid}
 
 model$resid()
 ```
@@ -46,7 +50,7 @@ model$resid()
 
 ## The pred() function in the linreg-package
 With the pred function the package will return the predicted values for the model
-```{r plot}
+```{r pred}
 
 model$pred()
 ```
@@ -54,7 +58,7 @@ model$pred()
 
 ## The coef() function in the linreg-package
 With the coef function the package will return the named coefficients for the model 
-```{r plot}
+```{r coef}
 
 model$coef()
 ```
@@ -62,17 +66,12 @@ model$coef()
 
 ## The summary() function in the linreg-
 With the summary function the package will print out a summary with the models coefficients, standard errors, t-values, p-values, estimations of $\hat{\sigma}$ and the degrees of freedoms.
-```{r plot}
+```{r summary}
 
 model$summary()
 ```
 
 
-## The plot() function in the linreg-package
-With the plot function the package will create
-```{r plot}
 
-model$summary()
-```
 
 

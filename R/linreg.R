@@ -11,6 +11,7 @@
 #' @import matlib 
 #' @import ggplot2
 #'
+#' @export linreg
 
 
 
@@ -52,7 +53,7 @@ linreg <- setRefClass("linreg",
 
       beta_se = "numeric",
       t_values = "numeric",
-      p_values = "numeric"
+      p_values = "numeric",
       stand_res = "array"
 
     ),

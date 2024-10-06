@@ -9,7 +9,7 @@ Description: Assignment for lab 4 in Advanced R programming. This package is use
 License: GPL-3 + file LICENSE
 Depends: 
     R (>= 3.5.0),
-    matlib
+    matlib,
     ggplot2
 RoxygenNote: 7.3.2
 Encoding: UTF-8
