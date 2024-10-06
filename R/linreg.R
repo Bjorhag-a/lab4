@@ -8,11 +8,12 @@
 #' @param formula a formula object.
 #' @param data a data frame.
 #' 
-#' @import matlib ggplot2
+#' @import matlib 
+#' @import ggplot2
+#'
 
 
 
-library(matlib)
 # 
 # data("iris")
 # 
